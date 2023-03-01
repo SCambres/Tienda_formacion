@@ -13,18 +13,17 @@
         </thead>
         <tbody>
         {foreach $smarty.session['carrito'] as $carrito}
-            {$subtotal = $carrito['Price'] * $carrito['Quantity']}
             <tr>
                 <td>{$carrito['Name']}</td>
                 <td>{$carrito['Quantity']}</td>
                 <td>{$carrito['Price']}€</td>
-                <td>{$subtotal}€</td>
+                <td>{$carrito['subtotal']}€</td>
             </tr>
         {/foreach}
         </tbody>
         <tbody>
             <th>Precio total del pedido</th>
-                <td>{$precioTotal}€</td>
+            <td><span id="totalPrice">{$precioTotal}</span>€</td>
         </tbody>
     </table>
     <div>

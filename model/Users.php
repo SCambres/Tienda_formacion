@@ -32,7 +32,7 @@ class Users {
             if ($resultado->num_rows==1){
                 $usuario = mysqli_fetch_assoc($resultado);
 
-                $_SESSION['Id'] = $usuario['Id'];
+                $_SESSION['IdUser'] = $usuario['Id'];
                 $_SESSION['Email'] = $usuario['Email'];
                 $_SESSION['Password'] = $usuario['Password'];
                 $_SESSION['Name'] = $usuario['Name'];

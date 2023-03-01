@@ -141,32 +141,19 @@ function comprarProducto(Id) {
     });
 }
 
-function finalizarComra(Id) {
+function finalizarCompra() {
+    var TotalPrice = $('#totalPrice').html();
     $.ajax({
         type: 'POST',
         url: 'controller/ajax/FinalizarAjax.php',
-        data: {Id: Id},
-        //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LOS DEL PHP EN LA VARIABLE RESPONSE
+        data: {TotalPrice: TotalPrice},
+        //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LO DEL PHP EN LA VARIABLE RESPONSE
         success: function (response){
             if (response){
-                $('#carritoConteo').html(
-                    '<a href=""><i class="fa fa-shopping-cart fa-2x"></i><span>'+response+'</span></a>'
-                );
-                Swal.fire({
-                    title: 'Producto añadido al carrito!',
-                    text: 'Continua comprando',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                })
 
+                alert("compra finalizada exitosamente");
             } else {
-                Swal.fire({
-                    title: 'No se ha podido añadir al carrito',
-                    text: 'Vuelve para volver a intentarlo',
-                    icon: 'error',
-                    confirmButtonText: 'VOLVER'
-                    // alert('No se ha podido añadir al carrito');
-                })
+                alert('No se ha podido añadir al carrito');
             }
         },
         error: function (){

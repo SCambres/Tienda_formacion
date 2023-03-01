@@ -1,6 +1,5 @@
 -----------------------------------------DESCRIPIÓN DEL PRYECTO-------------------------------------------------------
-    Proyecto de tienda de venta de productos. Se utilizará una arquitectura de software MVC en php, apyoada en MySQL con
-    base de atos en MariaDB, con la libreria Smarty como motor de plantillas.
+    Proyecto de tienda de venta de productos. Se utilizará una arquitectura de software MVC en php, apyoada en MySQL con base de atos en MariaDB, con la libreria Smarty como motor de plantillas.
 
 
 -----------------------------------------INSTRUCCIONES DE CONNFIGURACIÓN----------------------------------------------
