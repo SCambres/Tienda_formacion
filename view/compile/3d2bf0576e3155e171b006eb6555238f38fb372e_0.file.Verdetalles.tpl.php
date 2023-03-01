@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-02-28 15:03:07
+/* Smarty version 4.3.0, created on 2023-03-01 11:14:11
   from '/var/www/ejercicios/tienda_formacion/view/Verdetalles.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63fe099bb42737_45223973',
+  'unifunc' => 'content_63ff257379d9a5_81756499',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3d2bf0576e3155e171b006eb6555238f38fb372e' => 
     array (
       0 => '/var/www/ejercicios/tienda_formacion/view/Verdetalles.tpl',
-      1 => 1677592302,
+      1 => 1677665648,
       2 => 'file',
     ),
   ),
@@ -23,21 +23,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_63fe099bb42737_45223973 (Smarty_Internal_Template $_smarty_tpl) {
+function content_63ff257379d9a5_81756499 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:layout/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:layout/headerModuleView.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 <div>
     <table class="table mt-5">
-        <tr>
-            <td>Id</td>
-            <td>Nombre</td>
-            <td>Stock</td>
-            <td>Price</td>
-            <td>Image</td>
-
-        </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
         <tbody>
 
         <?php

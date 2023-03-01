@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-02-28 15:59:43
+/* Smarty version 4.3.0, created on 2023-03-01 10:56:14
   from '/var/www/ejercicios/tienda_formacion/view/layout/headerModuleView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63fe16dfe272e8_84461822',
+  'unifunc' => 'content_63ff213ed3cf27_71275222',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe331ba17e0b8f8fdbaedd0fe5894365cbf65a23' => 
     array (
       0 => '/var/www/ejercicios/tienda_formacion/view/layout/headerModuleView.tpl',
-      1 => 1677596375,
+      1 => 1677664573,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63fe16dfe272e8_84461822 (Smarty_Internal_Template $_smarty_tpl) {
-?><div class="toolbar row p-2">
+function content_63ff213ed3cf27_71275222 (Smarty_Internal_Template $_smarty_tpl) {
+?><a href="index.php?ctrl=Wellcome" class="text-black"><i class="fa-solid fa-shop fa-2x"></i></a>
+<div class="toolbar row p-2">
     <div class="wellcome col-6">
         <h2>BIENVENIDO</h2>
         <?php echo $_SESSION['Name'];?>
@@ -39,7 +40,7 @@ function content_63fe16dfe272e8_84461822 (Smarty_Internal_Template $_smarty_tpl)
 </div>
 <div id="logout" class="row p-2">
     <div class="col-12 text-end">
-        <a href="index.php?ctrl=Logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+        <a href="index.php?ctrl=Logout" class="text-black"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
     </div>
 </div><?php }
 }

@@ -105,20 +105,68 @@ $(document).ready(function (){
         });
     });
 })
-
+//FUNCION PARA COMPRAR UN PRODUCTO SEGUN SU ID, QUE NOS DEVULVE EL CONTEO DE PRODUCTOS
 function comprarProducto(Id) {
     $.ajax({
         type: 'POST',
         url: 'controller/ajax/ComprarAjax.php',
         data: {Id: Id},
+        //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LOS DEL PHP EN LA VARIABLE RESPONSE
         success: function (response){
             if (response){
                 $('#carritoConteo').html(
                     '<a href=""><i class="fa fa-shopping-cart fa-2x"></i><span>'+response+'</span></a>'
                 );
-                alert('Producto añadido al carrito');
+                Swal.fire({
+                    title: 'Producto añadido al carrito!',
+                    text: 'Continua comprando',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+
             } else {
-                alert('No se ha podido añadir al carrito');
+                Swal.fire({
+                    title: 'No se ha podido añadir al carrito',
+                    text: 'Vuelve para volver a intentarlo',
+                    icon: 'error',
+                    confirmButtonText: 'VOLVER'
+                    // alert('No se ha podido añadir al carrito');
+                })
+
+            }
+        },
+        error: function (){
+            alert('Fallo en la llamada a Ajax');
+        }
+    });
+}
+
+function finalizarComra(Id) {
+    $.ajax({
+        type: 'POST',
+        url: 'controller/ajax/FinalizarAjax.php',
+        data: {Id: Id},
+        //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LOS DEL PHP EN LA VARIABLE RESPONSE
+        success: function (response){
+            if (response){
+                $('#carritoConteo').html(
+                    '<a href=""><i class="fa fa-shopping-cart fa-2x"></i><span>'+response+'</span></a>'
+                );
+                Swal.fire({
+                    title: 'Producto añadido al carrito!',
+                    text: 'Continua comprando',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+
+            } else {
+                Swal.fire({
+                    title: 'No se ha podido añadir al carrito',
+                    text: 'Vuelve para volver a intentarlo',
+                    icon: 'error',
+                    confirmButtonText: 'VOLVER'
+                    // alert('No se ha podido añadir al carrito');
+                })
             }
         },
         error: function (){

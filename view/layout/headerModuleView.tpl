@@ -1,3 +1,4 @@
+<a href="index.php?ctrl=Wellcome" class="text-black"><i class="fa-solid fa-shop fa-2x"></i></a>
 <div class="toolbar row p-2">
     <div class="wellcome col-6">
         <h2>BIENVENIDO</h2>
@@ -14,6 +15,6 @@
 </div>
 <div id="logout" class="row p-2">
     <div class="col-12 text-end">
-        <a href="index.php?ctrl=Logout"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+        <a href="index.php?ctrl=Logout" class="text-black"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
     </div>
 </div>

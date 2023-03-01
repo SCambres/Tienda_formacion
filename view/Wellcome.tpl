@@ -3,29 +3,31 @@
 
 <div>
     <table class="table mt-5">
-        <tr>
-            <td>Id</td>
-            <td>Nombre</td>
-            <td>Acciones</td>
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
 
-        </tr>
+            </tr>
+        </thead>
         <tbody>
         {foreach $listaProducto as $product}
             <tr id="product{$product['Id']}" data-id="{$product['Id']}">
                 <td>{$product['Id']}</td>
                 <td>{$product['Name']}</td>
                 <td>
-                    <button type="button" class="btn-primary btn-group" onclick="location.href='index.php?ctrl=Detalles&producto={$product['Id']}'">VER DETALLES</button>
-                    <button type="button" class="btn-secondary btn-group" onclick="location.href='index.php?ctrl=Editar&producto={$product['Id']}'">EDITAR</button>
-                    <button type="button" class="btn-danger btn-group" onclick="location.href='index.php?ctrl=Borrar&producto={$product['Id']}'">ELIMINAR</button>
-                    <button type="button" class="btn-primary btn-group" onclick="comprarProducto({$product['Id']})">COMPRAR</button>
+                    <button type="button" class="btn btn-primary btn-group" onclick="location.href='index.php?ctrl=Detalles&producto={$product['Id']}'">VER DETALLES</button>
+                    <button type="button" class="btn btn-secondary btn-group" onclick="location.href='index.php?ctrl=Editar&producto={$product['Id']}'">EDITAR</button>
+                    <button type="button" class="btn btn-danger btn-group" onclick="location.href='index.php?ctrl=Borrar&producto={$product['Id']}'">ELIMINAR</button>
+                    <button type="button" class="btn btn-primary btn-group" onclick="comprarProducto({$product['Id']})">COMPRAR</button>
                 </td>
             </tr>
         {/foreach}
         </tbody>
     </table>
     <div>
-        <button type="button" class="btn-primary" onclick="location.href='index.php?ctrl=Crear'">AÑADIR NUEVO PRODUCTO </button>
+        <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Crear'">AÑADIR NUEVO PRODUCTO </button>
     </div>
 
 </div>

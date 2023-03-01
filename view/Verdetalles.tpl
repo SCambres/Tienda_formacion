@@ -3,14 +3,15 @@
 
 <div>
     <table class="table mt-5">
-        <tr>
-            <td>Id</td>
-            <td>Nombre</td>
-            <td>Stock</td>
-            <td>Price</td>
-            <td>Image</td>
-
-        </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
         <tbody>
 
         {foreach $infoProducto as $info}
