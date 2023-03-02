@@ -22,6 +22,8 @@ $(document).ready(function (){
             });
         });
 
+        //------ FUNCIONES PARA GESTIONAR LA VISTA Y ACCIONES DE LOS PRODUCTOS Y EL CARRITO -----------
+
         //FUNCION ACTUALIZAR DATOS PRODUCTO
     $("#enviarEditar").click(function(){
         var Name = $('#Name').val();
@@ -141,6 +143,7 @@ function comprarProducto(Id) {
     });
 }
 
+//FUNCION PARA FINALIZAR LA COMPRA GUARDANDO LOS DATOS EN BD Y VACIAR EL CARRITO
 function finalizarCompra() {
     var TotalPrice = $('#totalPrice').html();
     $.ajax({
@@ -149,18 +152,28 @@ function finalizarCompra() {
         data: {TotalPrice: TotalPrice},
         //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LO DEL PHP EN LA VARIABLE RESPONSE
         success: function (response){
-            if (response){
+            //GUARDAMOS EN PRUEBA EL OBJETO PARSEANDO EL JSON
+            var prueba = JSON.parse(response);
+            //SI LA RESPUESTA ES DISTINTA A ERROR PITAMOS LA ALERTA CORRESPONDIENTE Y REEDIRIJIMOS
+            if (!prueba.Error){
                 Swal.fire({
                     title: 'Compra finalizada!',
                     text: 'Puedes seguir explorando nuestros productos',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'OK',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+                    }
                 })
-                // window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
-
-                // alert("compra finalizada exitosamente");
+            //SI LA RESPUESTA DA ERROR PINTAMOS UNA ALERTA CORRESPONDIENTE
             } else {
-                alert('No se ha podido añadir al carrito');
+                Swal.fire({
+                    title: 'ERROR!',
+                    text: prueba.Error,
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                })
             }
         },
         error: function (){
@@ -168,6 +181,8 @@ function finalizarCompra() {
         }
     });
 }
+
+//-- FUNCIONES PARA GESTIONAR LA VISTA Y ACCIONES DE LOS PEDIDOS --//
 
 //ERROR A REVISAR QUE DICE QUE EL EVENTO  LISTENER DE ENVIAR ES NULL
 // const enviar = document.getElementById("enviar");

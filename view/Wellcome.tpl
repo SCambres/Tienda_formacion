@@ -29,6 +29,9 @@
     <div>
         <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Crear'">AÑADIR NUEVO PRODUCTO </button>
     </div>
+    <div>
+        <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Pedidos'">VER TODOS LOS PEDIDOS</button>
+    </div>
 
 </div>
 {include file='layout/footer.tpl'}

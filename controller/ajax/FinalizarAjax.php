@@ -8,38 +8,56 @@ include_once("../../model/Product.php");
 $IdUser = $_SESSION['IdUser'];
 $Date= date('Y-m-d H:i:s');
 $TotalPrice = $_POST['TotalPrice'];
-//number_format($TotalPrice, 2, ",", ".");
 
 $product = new Product();
 
-$orden = new Orders();
-$orden->setUserId($IdUser);
-$orden->setTotalPrice($TotalPrice);
-$orden->setDate($Date);
-$orden->create();
+$order = new Orders();
+$order->setUserId($IdUser);
+$order->setTotalPrice($TotalPrice);
+$order->setDate($Date);
 
-$IdOrder = $orden->getId();
+global $conexion;
+//UTILIZACION DE TRANSACCION PHP/MYSQL PARA EJECUTAR COMMIT EN EL CASO DE FUNCIONAR CORRECTAMENTE
+//Y ROLLBACK EN EL CASO DE QUE SURJA ALGUN ERROR (TENER EN CUENTA QUE EL ROLLBACK DESHACE LOS INSERTS
+//A LAS TABLAS PERO SIGUE INCREMENTANDO EL ID EN LA TABLA)
+$conexion->begin_transaction();
+$conexion->autocommit(false);
+try {
+    if ($order->create()){
 
-$order_lines = new Order_lines();
-foreach ($_SESSION['carrito'] as $key => $carrito){
+        $IdOrder = $order->getId();
 
-    $order_lines->setOrderId($orden->getId());
-    $order_lines->setProductId($carrito['Idproduct']);
-    $order_lines->setQuantity($_SESSION['carrito'][$key]['Quantity']);
+        $order_lines = new Order_lines();
+        //RECORREMOS EL ARRAY DE SESION DEL CARRITO Y POR CADA REGISTRO SETAMOS LOS ATRIBUTOS PARA
+        //INSERTAR LOS DATOS EN LA TABLA ORDER_LINES
+        foreach ($_SESSION['carrito'] as $key => $carrito){
 
+            $order_lines->setOrderId($order->getId());
+            $order_lines->setProductId($carrito['Idproduct']);
+            $order_lines->setQuantity($_SESSION['carrito'][$key]['Quantity']);
+            if (!$order_lines->create()){
+                throw new Exception("Error al insertar la linea de pedido");
+            }
+        }
+        //COMMIT DE LOS INSERTS, Y UNSET DE EL CARRITO PARA VACIARLO
+        $conexion->commit();
+        echo true;
+        unset($_SESSION['carrito']);
+    } else {
+        throw new Exception("Error en el pedido");
+    }
+//CONTROL DE LOS ERRORES MANDANDO AL JS UN OBJETO CON EL MENSAJE
+} catch (Exception $e) {
+     echo json_encode(["Error" => $e->getMessage()]);
+    $conexion->rollback();
 
-    $order_lines->create();
-//    var_dump($orden->getId());
-//    var_dump($_SESSION['carrito'][$key]['Idproduct']);
-//    var_dump($_SESSION['carrito'][$key]['Quantity']);
 }
-echo true;
+$conexion->autocommit(true);
 
-//if ($order_lines->create()){
-//    echo true;
-//} else {
-//    echo false;
-//}
+
+
+
+
 
 
 
