@@ -4,7 +4,7 @@ class Order_lines
 {
     public $Id;
     public $OrderId;
-    public $ProductTd;
+    public $ProductId;
     public $Quantity;
 
     public $allOrders_line;
@@ -16,8 +16,7 @@ class Order_lines
     }
 
     //METODO PARA CARGAR UNA ORDEN FILTRADO POR SU ID
-    public function load()
-    {
+    public function load() {
 
         global $conexion;
 
@@ -76,7 +75,7 @@ class Order_lines
 
         $query = "INSERT INTO `Order_lines` (`OrderId`, `ProductId`, `Quantity`)
                                 VALUES ('" . $conexion->real_escape_string($this->getOrderId()) . "',
-                                        '" . $conexion->real_escape_string($this->getProductTd()) . "',
+                                        '" . $conexion->real_escape_string($this->getProductId()) . "',
                                         '" . $conexion->real_escape_string($this->getQuantity()) . "');";
 
         $conexion->query($query);
@@ -97,7 +96,7 @@ class Order_lines
 
         $query = "UPDATE `Order_lines` SET 
                   `OrderId` = '" . $conexion->real_escape_string($this->getOrderId()) . "',
-                  `ProductId` = '" . $conexion->real_escape_string($this->getProductTd()) . "',
+                  `ProductId` = '" . $conexion->real_escape_string($this->getProductId()) . "',
                   `Quantity` = '" . $conexion->real_escape_string($this->getQuantity()) . "'
                   WHERE `Id` = '{$this->getId()}'";
 
@@ -163,17 +162,17 @@ class Order_lines
     /**
      * @return mixed
      */
-    public function getProductTd()
+    public function getProductId()
     {
-        return $this->ProductTd;
+        return $this->ProductId;
     }
 
     /**
-     * @param mixed $ProductTd
+     * @param mixed $ProductId
      */
-    public function setProductTd($ProductTd): void
+    public function setProductId($ProductId): void
     {
-        $this->ProductTd = $ProductTd;
+        $this->ProductId = $ProductId;
     }
 
     /**

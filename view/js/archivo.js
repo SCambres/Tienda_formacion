@@ -150,8 +150,15 @@ function finalizarCompra() {
         //SI LA LLAMADA AJAX DA CODIGO CORRECTO 200, NOS DEVUELVE LO DEL PHP EN LA VARIABLE RESPONSE
         success: function (response){
             if (response){
+                Swal.fire({
+                    title: 'Compra finalizada!',
+                    text: 'Puedes seguir explorando nuestros productos',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+                // window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
 
-                alert("compra finalizada exitosamente");
+                // alert("compra finalizada exitosamente");
             } else {
                 alert('No se ha podido añadir al carrito');
             }
