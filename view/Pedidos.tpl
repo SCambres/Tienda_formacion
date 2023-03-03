@@ -22,21 +22,18 @@
                 <td>{$order['Date']}</td>
 
                 <td>
-                    <button type="button" class="btn btn-primary btn-group" onclick="comprarProducto({$order['Id']})">VER DETALLES</button>
-                    <button type="button" class="btn btn-secondary btn-group" onclick="comprarProducto({$order['Id']})">EDITAR</button>
-                    <button type="button" class="btn btn-danger btn-group" onclick="comprarProducto({$order['Id']})">ELIMINAR</button>
+                    <button type="button" class="btn btn-primary btn-group" onclick="">VER DETALLES</button>
+                    <button type="button" class="btn btn-secondary btn-group" onclick="">EDITAR</button>
+                    <button type="button" class="btn btn-danger btn-group" onclick="">ELIMINAR</button>
                 </td>
             </tr>
         {/foreach}
         </tbody>
     </table>
     <div>
-        <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Crear'">AÑADIR NUEVO PRODUCTO </button>
+        <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Crearpedido'">CREAR UN NUEVO PEDIDO</button>
     </div>
 
 </div>
-
-
-
 
 {include file='layout/footer.tpl'}

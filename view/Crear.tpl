@@ -37,3 +37,5 @@
         </div>
     </div>
 </div>
+
+{include file='layout/footer.tpl'}

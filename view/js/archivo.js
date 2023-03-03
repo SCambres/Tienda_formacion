@@ -106,7 +106,44 @@ $(document).ready(function (){
             }
         });
     });
+
+    $("#productosElegidos").change(function (){
+        var totalPrice = parseFloat($("#TotalPrice").val()) || 0;
+        var selectedProducts = {};
+        $("#productosElegidos option:selected").each(function (){
+            var productId = $(this).val();
+            totalPrice += parseFloat($(this).text().split("-")[1]);
+            if (selectedProducts[productId]){
+                selectedProducts[productId]++;
+            } else{
+                selectedProducts[productId] = 1;
+            }
+        });
+        $("#TotalPrice").val(totalPrice.toFixed(2));
+        $("#productosElegidos").data("selected-products", selectedProducts);
+    });
 })
+
+// -- FUNCIONES PARA GESTIONAR LA VISTA Y ACCIONES DE LOS PEDIDOS --//
+function creacionPedido() {
+    var UserId = $('#UserId').val();
+    var productosElegidos = $('#productosElegidos').data("selected-products");
+    var Date = $('#Date').val();
+    var TotalPrice = $('#TotalPrice').val();
+    console.log(productosElegidos);
+    $.ajax({
+        type: 'POST',
+        url: 'controller/ajax/crearPedidoAjax.php',
+        data: {UserId: UserId, productosElegidos: productosElegidos, Date: Date, TotalPrice: TotalPrice},
+        success: function(response) {
+
+            alert("El pedido se creo de forma correcta")
+        },
+        error: function() {
+            alert('Fallo en la llamada a Ajax');
+        }
+    });
+}
 //FUNCION PARA COMPRAR UN PRODUCTO SEGUN SU ID, QUE NOS DEVULVE EL CONTEO DE PRODUCTOS
 function comprarProducto(Id) {
     $.ajax({
@@ -134,7 +171,6 @@ function comprarProducto(Id) {
                     confirmButtonText: 'VOLVER'
                     // alert('No se ha podido añadir al carrito');
                 })
-
             }
         },
         error: function (){
@@ -182,7 +218,6 @@ function finalizarCompra() {
     });
 }
 
-//-- FUNCIONES PARA GESTIONAR LA VISTA Y ACCIONES DE LOS PEDIDOS --//
 
 //ERROR A REVISAR QUE DICE QUE EL EVENTO  LISTENER DE ENVIAR ES NULL
 // const enviar = document.getElementById("enviar");
