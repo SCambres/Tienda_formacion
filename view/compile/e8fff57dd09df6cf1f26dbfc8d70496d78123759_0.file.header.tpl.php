@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-03-01 10:45:14
+/* Smarty version 4.3.0, created on 2023-03-06 12:05:58
   from '/var/www/ejercicios/tienda_formacion/view/layout/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_63ff1eaad68487_11036749',
+  'unifunc' => 'content_6405c916341725_63308690',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63ff1eaad68487_11036749 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6405c916341725_63308690 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="es">
 <head>

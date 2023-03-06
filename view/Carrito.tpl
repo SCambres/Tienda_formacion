@@ -29,6 +29,7 @@
     <div>
         <button type="button" class="btn btn-primary" onclick="finalizarCompra()">FINALIZAR COMPRA</button>
         <button type="button" class="btn btn-primary" onclick="location.href='index.php?ctrl=Wellcome'">SEGUIR COMPRANDO</button>
+        <button type="button" class="btn btn-danger" onclick="vaciarCarrito()">VACIAR CARRITO</button>
 
     </div>
 </div>

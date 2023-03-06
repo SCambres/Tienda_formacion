@@ -8,6 +8,7 @@ class Order_lines
     public $Quantity;
 
     public $allOrders_line;
+    public $infoOrder_lines;
 
 
     //METODO CONSTRUCTOR PARA CREAR UNN OBJETO DE LA CLASE ORDERS CON TODOS LOS ATRIBUTOS
@@ -55,6 +56,33 @@ class Order_lines
             if ($resultado->num_rows > 0) {
                 while ($row = $resultado->fetch_assoc()) {
                     $this->allOrders_line[] = array(
+                        "Id" => $row["Id"],
+                        "OrderId" => $row["OrderId"],
+                        "ProductId" => $row["ProductId"],
+                        "Quantity" => $row["Quantity"],
+                    );
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function loadInfoOrdersLines()
+    {
+        global $conexion;
+
+        $query = "SELECT * FROM `Order_lines` WHERE `OrderId` = '{$this->OrderId}'";
+
+        $resultado = $conexion->query($query);
+
+        if ($conexion->error) {
+            return false;
+        } else {
+            if ($resultado->num_rows > 0) {
+                while ($row = $resultado->fetch_assoc()) {
+                    $this->infoOrder_lines[] = array(
                         "Id" => $row["Id"],
                         "OrderId" => $row["OrderId"],
                         "ProductId" => $row["ProductId"],

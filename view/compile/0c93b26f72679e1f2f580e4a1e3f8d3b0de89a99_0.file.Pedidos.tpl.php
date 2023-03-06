@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.0, created on 2023-03-03 10:09:38
+/* Smarty version 4.3.0, created on 2023-03-06 12:06:07
   from '/var/www/ejercicios/tienda_formacion/view/Pedidos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.0',
-  'unifunc' => 'content_6401b952381147_95723128',
+  'unifunc' => 'content_6405c91f0aea09_01495392',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0c93b26f72679e1f2f580e4a1e3f8d3b0de89a99' => 
     array (
       0 => '/var/www/ejercicios/tienda_formacion/view/Pedidos.tpl',
-      1 => 1677833658,
+      1 => 1678100311,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layout/footer.tpl' => 1,
   ),
 ),false)) {
-function content_6401b952381147_95723128 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6405c91f0aea09_01495392 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:layout/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:layout/headerModuleView.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -60,9 +60,11 @@ $_smarty_tpl->tpl_vars['order']->do_else = false;
 </td>
 
                 <td>
-                    <button type="button" class="btn btn-primary btn-group" onclick="">VER DETALLES</button>
-                    <button type="button" class="btn btn-secondary btn-group" onclick="">EDITAR</button>
-                    <button type="button" class="btn btn-danger btn-group" onclick="">ELIMINAR</button>
+                    <button type="button" class="btn btn-primary btn-group" onclick="location.href='index.php?ctrl=Detallespedido&order=<?php echo $_smarty_tpl->tpl_vars['order']->value['Id'];?>
+'">VER DETALLES</button>
+                    <button type="button" class="btn btn-secondary btn-group" onclick="location.href='">EDITAR</button>
+                    <button type="button" class="btn btn-danger btn-group" onclick="borrarPedido(<?php echo $_smarty_tpl->tpl_vars['order']->value['Id'];?>
+)">ELIMINAR</button>
                 </td>
             </tr>
         <?php

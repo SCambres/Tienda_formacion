@@ -3,6 +3,7 @@
     <div class="wellcome col-6">
         <h2>BIENVENIDO</h2>
         {$smarty.session.Name}
+
     </div>
 
     <div id="carritoConteo" class="trolley col-6 ">

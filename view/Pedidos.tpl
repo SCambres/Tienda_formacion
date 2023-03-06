@@ -22,9 +22,9 @@
                 <td>{$order['Date']}</td>
 
                 <td>
-                    <button type="button" class="btn btn-primary btn-group" onclick="">VER DETALLES</button>
-                    <button type="button" class="btn btn-secondary btn-group" onclick="">EDITAR</button>
-                    <button type="button" class="btn btn-danger btn-group" onclick="">ELIMINAR</button>
+                    <button type="button" class="btn btn-primary btn-group" onclick="location.href='index.php?ctrl=Detallespedido&order={$order['Id']}'">VER DETALLES</button>
+                    <button type="button" class="btn btn-secondary btn-group" onclick="location.href='">EDITAR</button>
+                    <button type="button" class="btn btn-danger btn-group" onclick="borrarPedido({$order['Id']})">ELIMINAR</button>
                 </td>
             </tr>
         {/foreach}

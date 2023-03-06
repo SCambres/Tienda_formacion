@@ -107,6 +107,7 @@ $(document).ready(function (){
         });
     });
 
+    //CARGA EN EL INPUT CORRESPONDIENTE EL PRECIO TOTAL DE LOS PRODUCTOS SELECCIONADOS
     $("#productosElegidos").change(function (){
         var totalPrice = parseFloat($("#TotalPrice").val()) || 0;
         var selectedProducts = {};
@@ -114,7 +115,7 @@ $(document).ready(function (){
             var productId = $(this).val();
             totalPrice += parseFloat($(this).text().split("-")[1]);
             if (selectedProducts[productId]){
-                selectedProducts[productId]++;
+                selectedProducts[productId].count++;
             } else{
                 selectedProducts[productId] = 1;
             }
@@ -122,6 +123,7 @@ $(document).ready(function (){
         $("#TotalPrice").val(totalPrice.toFixed(2));
         $("#productosElegidos").data("selected-products", selectedProducts);
     });
+
 })
 
 // -- FUNCIONES PARA GESTIONAR LA VISTA Y ACCIONES DE LOS PEDIDOS --//
@@ -130,7 +132,7 @@ function creacionPedido() {
     var productosElegidos = $('#productosElegidos').data("selected-products");
     var Date = $('#Date').val();
     var TotalPrice = $('#TotalPrice').val();
-    console.log(productosElegidos);
+
     $.ajax({
         type: 'POST',
         url: 'controller/ajax/crearPedidoAjax.php',
@@ -144,6 +146,32 @@ function creacionPedido() {
         }
     });
 }
+
+function borrarPedido(Id) {
+    swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás recuperar este pedido una vez que lo elimines!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'controller/ajax/borrarPedidoAjax.php',
+                    data: {Id: Id},
+                    success: function(response) {
+                        window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Pedidos';
+                    },
+                    error: function() {
+                        alert('Fallo en la llamada a Ajax');
+                    }
+                });
+            }
+        });
+}
+
 //FUNCION PARA COMPRAR UN PRODUCTO SEGUN SU ID, QUE NOS DEVULVE EL CONTEO DE PRODUCTOS
 function comprarProducto(Id) {
     $.ajax({
@@ -156,6 +184,7 @@ function comprarProducto(Id) {
                 $('#carritoConteo').html(
                     '<a href=""><i class="fa fa-shopping-cart fa-2x"></i><span>'+response+'</span></a>'
                 );
+
                 Swal.fire({
                     title: 'Producto añadido al carrito!',
                     text: 'Continua comprando',
@@ -169,7 +198,6 @@ function comprarProducto(Id) {
                     text: 'Vuelve para volver a intentarlo',
                     icon: 'error',
                     confirmButtonText: 'VOLVER'
-                    // alert('No se ha podido añadir al carrito');
                 })
             }
         },
@@ -177,6 +205,21 @@ function comprarProducto(Id) {
             alert('Fallo en la llamada a Ajax');
         }
     });
+}
+
+//FUNCION PARA VACIAR EL CARRITO DE LOS PRODUCTOS GUARDADOS
+function vaciarCarrito(){
+    $.ajax({
+        type: "Post",
+        url: "controller/ajax/vaciarCarritoAjax.php",
+        success: function (response){
+            window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+            alert("Se ha vaciado el carrito de productos");
+        },
+        error: function (){
+            alert("Fallo en la llamada a Ajax");
+        }
+    })
 }
 
 //FUNCION PARA FINALIZAR LA COMPRA GUARDANDO LOS DATOS EN BD Y VACIAR EL CARRITO

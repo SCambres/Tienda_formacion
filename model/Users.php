@@ -36,6 +36,7 @@ class Users {
                 $_SESSION['Email'] = $usuario['Email'];
                 $_SESSION['Password'] = $usuario['Password'];
                 $_SESSION['Name'] = $usuario['Name'];
+                $_SESSION['Type'] = $usuario['Type'];
 
                 return true;
 
