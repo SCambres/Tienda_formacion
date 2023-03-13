@@ -11,7 +11,8 @@ $(document).ready(function (){
                 data: {email: email, password: password},
                 success: function (data){
                     if (data){
-                        window.location.assign('/ejercicios/tienda_formacion/index.php?ctrl=Wellcome');
+
+                        window.location.assign('index.php?ctrl=Wellcome');
                     } else {
                         alert('Email o contraseña incorrectos');
                     }
@@ -39,7 +40,7 @@ $(document).ready(function (){
             success: function (data){
                 if (data){
                     alert('Datos actualizados correctamente');
-                    window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+                    window.location.href = 'index.php?ctrl=Wellcome';
                 } else {
                     alert('Datos mal actualizados');
                 }
@@ -72,7 +73,7 @@ $(document).ready(function (){
             contentType: false,
             success: function (data){
                 if (data=!0){
-                    window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+                    window.location.href = 'index.php?ctrl=Wellcome';
                     alert('Producto creado de forma exitosa');
                 } else {
                     alert('No se ha podido crear el producto');
@@ -95,7 +96,7 @@ $(document).ready(function (){
             data: {Id: Id, Imagen: Imagen},
             success: function (data){
                 if (data){
-                    window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+                    window.location.href = 'index.php?ctrl=Wellcome';
                     alert('Producto borrado de forma exitosa');
                 } else {
                     alert('No se ha podido borrar el producto');
@@ -162,7 +163,7 @@ function borrarPedido(Id) {
                     url: 'controller/ajax/borrarPedidoAjax.php',
                     data: {Id: Id},
                     success: function(response) {
-                        window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Pedidos';
+                        window.location.href = 'index.php?ctrl=Pedidos';
                     },
                     error: function() {
                         alert('Fallo en la llamada a Ajax');
@@ -213,7 +214,7 @@ function vaciarCarrito(){
         type: "Post",
         url: "controller/ajax/vaciarCarritoAjax.php",
         success: function (response){
-            window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+            window.location.href = 'index.php?ctrl=Wellcome';
             alert("Se ha vaciado el carrito de productos");
         },
         error: function (){
@@ -242,7 +243,7 @@ function finalizarCompra() {
                     confirmButtonText: 'OK',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '/ejercicios/tienda_formacion/index.php?ctrl=Wellcome';
+                        window.location.href = 'index.php?ctrl=Wellcome';
                     }
                 })
             //SI LA RESPUESTA DA ERROR PINTAMOS UNA ALERTA CORRESPONDIENTE
